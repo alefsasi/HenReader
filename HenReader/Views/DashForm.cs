@@ -50,6 +50,11 @@ namespace HenReader.Views
             this.panel1.Visible = false;
             this.panel2.Visible = true;
         }
+        private void DashForm_Closed(object sender, System.EventArgs e)
+        {
+            if (this.selenium != null)
+                this.selenium.Exit();
+        }
 
         private void button1_Click(object sender, EventArgs e)
         {
@@ -126,7 +131,7 @@ namespace HenReader.Views
         {
 
         }
-
+    
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);

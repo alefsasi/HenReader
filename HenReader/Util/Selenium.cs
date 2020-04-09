@@ -93,7 +93,7 @@ Em seguida descompacte no mesmo diretório desta aplicação.");
             }
             catch (Exception)
             {
-                throw new Exception("Você não possui Favoritos salvos na sua conta!");
+                throw new Exception("Ocorreu um erro Inesperado!");
             }
 
         }
@@ -106,17 +106,17 @@ Em seguida descompacte no mesmo diretório desta aplicação.");
             var numPages = Int32.Parse(driver.FindElement(By.ClassName("num-pages")).Text);
 
             var containerHeight = driver.FindElement(By.Id("image-container")).Size.Height;
-
+            Thread.Sleep(1000);
 
             for (int i = 1; i < numPages; i++)
             {
-                Thread.Sleep(1000);
+
                 var scroll = containerHeight / 50;
 
                 for (int j = 0; j < scroll; j++)
                 {
-                    js.ExecuteScript("window.scrollBy(0,30)");
                     Thread.Sleep(tempoTransicao);
+                    js.ExecuteScript("window.scrollBy(0,30)");
                 }
 
                 driver.FindElement(By.ClassName("next")).Click();
