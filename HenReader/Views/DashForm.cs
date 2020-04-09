@@ -6,6 +6,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -13,8 +14,8 @@ namespace HenReader.Views
 {
     public partial class DashForm : Form
     {
-        public Selenium selenium { get; set; }
-
+        private Selenium selenium;
+        private Thread threadInit;
 
         public DashForm()
         {
@@ -50,13 +51,30 @@ namespace HenReader.Views
             this.panel1.Visible = false;
             this.panel2.Visible = true;
         }
-        private void DashForm_Closed(object sender, System.EventArgs e)
+        private void DashForm_FormClosed(object sender, FormClosedEventArgs e)
         {
-            if (this.selenium != null)
-                this.selenium.Exit();
+            try
+            {
+                threadInit.Abort();
+
+                if (this.selenium != null)
+                    this.selenium.Exit();
+            }
+            catch (Exception)
+            {
+                return;
+            }
+
         }
 
         private void button1_Click(object sender, EventArgs e)
+        {
+
+            threadInit = new Thread(new ThreadStart(Iniciar));
+            threadInit.Start();
+
+        }
+        private void Iniciar()
         {
             try
             {
@@ -76,7 +94,7 @@ namespace HenReader.Views
             catch (Exception ex)
             {
                 Mensagens.Exibir("Alerta!", ex.Message);
-              //  MessageBox.Show(ex.Message);
+   
             }
             finally
             {
@@ -84,7 +102,6 @@ namespace HenReader.Views
                     this.selenium.Exit();
             }
         }
-
         private void pictureBox1_Click(object sender, EventArgs e)
         {
             //TODO:
@@ -131,10 +148,12 @@ namespace HenReader.Views
         {
 
         }
-    
+
         private void textBox3_KeyPress(object sender, KeyPressEventArgs e)
         {
             e.Handled = !char.IsDigit(e.KeyChar) && !char.IsControl(e.KeyChar);
         }
+
+
     }
 }

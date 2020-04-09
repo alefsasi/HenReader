@@ -56,9 +56,9 @@
             // 
             this.settings.ErrorImage = null;
             this.settings.ImageLocation = "C:\\Users\\HimeHime3\\source\\repos\\HenReader\\HenReader\\Resource\\Images\\settings.png";
-            this.settings.Location = new System.Drawing.Point(399, 1);
+            this.settings.Location = new System.Drawing.Point(414, 12);
             this.settings.Name = "settings";
-            this.settings.Size = new System.Drawing.Size(40, 33);
+            this.settings.Size = new System.Drawing.Size(25, 25);
             this.settings.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.settings.TabIndex = 3;
             this.settings.TabStop = false;
@@ -68,7 +68,7 @@
             // 
             this.panel2.Controls.Add(this.button1);
             this.panel2.Controls.Add(this.pictureBox1);
-            this.panel2.Location = new System.Drawing.Point(22, 53);
+            this.panel2.Location = new System.Drawing.Point(23, 41);
             this.panel2.Name = "panel2";
             this.panel2.Size = new System.Drawing.Size(417, 217);
             this.panel2.TabIndex = 2;
@@ -118,7 +118,7 @@
             this.panel1.Controls.Add(this.textBox1);
             this.panel1.Controls.Add(this.label1);
             this.panel1.Controls.Add(this.button2);
-            this.panel1.Location = new System.Drawing.Point(77, 50);
+            this.panel1.Location = new System.Drawing.Point(78, 38);
             this.panel1.Name = "panel1";
             this.panel1.Size = new System.Drawing.Size(301, 217);
             this.panel1.TabIndex = 0;
@@ -261,7 +261,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoScroll = true;
             this.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.ClientSize = new System.Drawing.Size(462, 306);
+            this.ClientSize = new System.Drawing.Size(462, 280);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.settings);
             this.Controls.Add(this.panel1);
@@ -274,6 +274,7 @@
             this.SizeGripStyle = System.Windows.Forms.SizeGripStyle.Hide;
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "HenReader";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.DashForm_FormClosed);
             this.Load += new System.EventHandler(this.DashForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.settings)).EndInit();
             this.panel2.ResumeLayout(false);
