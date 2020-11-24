@@ -33,7 +33,7 @@ namespace HenReader.Util
                 throw new Exception(@"Erro ao Carregar driver do Navegador! 
 É necessário fazer download do driver do navegador no endereço: http://chromedriver.storage.googleapis.com/index.html 
 Em seguida descompacte no mesmo diretório desta aplicação.");
-            }
+            } // TESTE 2
 
         }
 
